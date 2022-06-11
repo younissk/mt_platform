@@ -1,11 +1,15 @@
 <script>
   import PostHeading from "./PostHeading.svelte";
   import NavItem from "../../navigation/components/NavItem.svelte";
+  import Comment from "./Comment.svelte";
+
+  export let comments = [];
 
   export let headingData = {
     date: "17:40 07.06.2022",
     userName: "name",
     postTitle: "This is a cool article I found",
+    commentsActive: false,
     profilePicture:
       "https://upload.wikimedia.org/wikipedia/commons/6/67/Kaaba_Masjid_Haraam_Makkah.jpg",
     content:
@@ -20,14 +24,25 @@
     postTitle={headingData.postTitle}
     profilePicture={headingData.profilePicture}
   />
-  {@html headingData.content}
+  <div class="content">
+    {@html headingData.content}
+  </div>
   <div class="bottom">
     <NavItem icon="thumb_up" />
-    <NavItem />
+    <div class="comments-button" on:click={() => console.log("test")}>
+      <NavItem />
+    </div>
   </div>
+  {#each comments as comment}
+    <Comment CommentData={comment} />
+  {/each}
 </div>
 
 <style>
+  .content {
+    margin: 8px;
+  }
+
   .card {
     margin: 20px 0;
     padding: 12px;

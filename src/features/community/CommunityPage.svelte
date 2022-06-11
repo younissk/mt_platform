@@ -1,6 +1,5 @@
 <script>
   import Post from "./components/Post.svelte";
-
   let posts = [
     {
       date: "17:40 07.06.2022",
@@ -10,6 +9,20 @@
         "https://upload.wikimedia.org/wikipedia/commons/6/67/Kaaba_Masjid_Haraam_Makkah.jpg",
       content:
         '<div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem illum eius consequatur nemo recusandae porro voluptas consectetur doloribus voluptatum deleniti, quidem ratione vel unde, sit distinctio, aspernatur aliquam eum! Veritatis qui recusandae iusto nostrum. </div>',
+      comments: [
+        {
+          userName: "Username",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ullam?",
+        },
+        {
+          userName: "testing",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim assumenda facilis quod! Quo aspernatur ab ullam alias perferendis deleniti voluptatibus. Libero tempore culpa possimus omnis facilis repudiandae. Libero perferendis eum reprehenderit eos, ipsa expedita numquam quasi repudiandae porro sequi non?",
+        },
+      ],
     },
     {
       date: "17:40 07.06.2022",
@@ -19,6 +32,26 @@
         "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
       content:
         '<h1 id="test-heading">Test heading</h1><p>This is a test article to see how It may look. This is a test article to see how It may look. This is a test article to see how It may look. This is a test article to see how It may look. This is a test article to see how It may look. This is a test article to see how It may look. </p><h2 id="heading-two">Heading two</h2><p>This is a test article to see how It may look. This is a test article to see how It may look. </p>',
+      comments: [
+        {
+          userName: "test",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem",
+        },
+        {
+          userName: "testing",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum, quasi repudiandae porro sequi non?",
+        },
+        {
+          userName: "testing",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum, quasi repudiandae porro sequi non?",
+        },
+      ],
     },
     {
       date: "17:40 07.06.2022",
@@ -46,6 +79,26 @@
         "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
       content:
         '<div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem illum eius consequatur nemo recusandae porro voluptas consectetur doloribus voluptatum deleniti, quidem ratione vel unde, sit distinctio, aspernatur aliquam eum! Veritatis qui recusandae iusto nostrum. </div>',
+      comments: [
+        {
+          userName: "test",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem",
+        },
+        {
+          userName: "testing",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum, quasi repudiandae porro sequi non?",
+        },
+        {
+          userName: "testing",
+          profilePicture:
+            "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
+          text: "Lorem ipsum, quasi repudiandae porro sequi non?",
+        },
+      ],
     },
     {
       date: "17:40 07.06.2022",
@@ -60,14 +113,16 @@
 </script>
 
 <main>
-  {#each posts as post}
-    <Post headingData={post} />
-  {/each}
+  <div class="content">
+    {#each posts as post}
+      <Post headingData={post} comments={post.comments} />
+    {/each}
+  </div>
 </main>
 
 <style>
   main {
     overflow-y: auto;
-    margin: 20px 40px;
+    margin: 80px 40px;
   }
 </style>

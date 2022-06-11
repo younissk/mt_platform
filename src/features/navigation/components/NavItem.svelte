@@ -12,13 +12,14 @@
     margin: 10px;
     border-radius: 50%;
   }
+
+  .main:hover {
+    cursor: pointer;
+  }
+
   i {
     font-size: 15px;
     padding: 7px;
     color: #090a0b;
-  }
-
-  .main:hover {
-    cursor: pointer;
   }
 </style>
