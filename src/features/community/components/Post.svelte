@@ -9,12 +9,13 @@
     date: "17:40 07.06.2022",
     userName: "name",
     postTitle: "This is a cool article I found",
-    commentsActive: false,
     profilePicture:
       "https://upload.wikimedia.org/wikipedia/commons/6/67/Kaaba_Masjid_Haraam_Makkah.jpg",
     content:
       '<div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem illum eius consequatur nemo recusandae porro voluptas consectetur doloribus voluptatum deleniti, quidem ratione vel unde, sit distinctio, aspernatur aliquam eum! Veritatis qui recusandae iusto nostrum. </div>',
   };
+
+  $: commentsActive = false;
 </script>
 
 <div class="card">
@@ -29,13 +30,18 @@
   </div>
   <div class="bottom">
     <NavItem icon="thumb_up" />
-    <div class="comments-button" on:click={() => console.log("test")}>
+    <div
+      class="comments-button"
+      on:click={() => (commentsActive = !commentsActive)}
+    >
       <NavItem />
     </div>
   </div>
-  {#each comments as comment}
-    <Comment CommentData={comment} />
-  {/each}
+  {#if commentsActive}
+    {#each comments as comment}
+      <Comment CommentData={comment} />
+    {/each}
+  {/if}
 </div>
 
 <style>
