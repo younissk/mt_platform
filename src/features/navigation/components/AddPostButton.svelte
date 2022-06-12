@@ -1,4 +1,10 @@
-<button class="add-post">Add post</button>
+<script>
+  import { Link } from "svelte-routing";
+</script>
+
+<Link to="add-post" style="width: 100%">
+  <button class="add-post">Add post</button>
+</Link>
 
 <style>
   .add-post {

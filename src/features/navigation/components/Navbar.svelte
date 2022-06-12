@@ -1,8 +1,14 @@
+<script>
+  import { Link } from "svelte-routing";
+</script>
+
 <nav>
-  <div class="nav-item">
-    <i class="material-icons">group</i>
-    <h3>Community</h3>
-  </div>
+  <Link to="/" style="width: 100%; text-decoration: none; color: #e5e5e5">
+    <div class="nav-item">
+      <i class="material-icons">group</i>
+      <h3>Community</h3>
+    </div>
+  </Link>
 
   <div class="nav-item">
     <i class="material-icons">forum</i>

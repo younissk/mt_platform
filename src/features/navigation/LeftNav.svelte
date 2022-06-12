@@ -27,6 +27,7 @@
     min-width: 200px;
     height: 100%;
   }
+
   .logo {
     transform: translateY(20px);
     max-width: 100px;

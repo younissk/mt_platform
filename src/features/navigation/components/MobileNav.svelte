@@ -1,15 +1,23 @@
+<script>
+  import { Link } from "svelte-routing";
+</script>
+
 <nav>
-  <div class="nav-item">
-    <i class="material-icons">group</i>
-  </div>
+  <Link to="/" style="text-decoration: none; color: #e5e5e5">
+    <div class="nav-item">
+      <i class="material-icons">group</i>
+    </div>
+  </Link>
 
   <div class="nav-item">
     <i class="material-icons">forum</i>
   </div>
 
-  <div class="nav-item" id="add">
-    <i class="material-icons">add</i>
-  </div>
+  <Link to="/add-post" style="text-decoration: none; color: #e5e5e5">
+    <div class="nav-item" id="add">
+      <i class="material-icons">add</i>
+    </div>
+  </Link>
 
   <div class="nav-item">
     <i class="material-icons">slideshow</i>

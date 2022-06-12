@@ -3,20 +3,37 @@
   import LeftNav from "./features/navigation/LeftNav.svelte";
   import RightNav from "./features/navigation/RightNav.svelte";
   import CommunityPage from "./features/community/CommunityPage.svelte";
+  import AddPostPage from "./features/add-post/AddPostPage.svelte";
+  import { Router, Route } from "svelte-routing";
 </script>
 
-<main>
-  <div class="right">
-    <TopNav pageName="Community" />
-    <CommunityPage />
-    <RightNav />
-  </div>
-  <div class="left">
-    <LeftNav />
-  </div>
-</main>
+<Router>
+  <main>
+    <div class="right">
+      <TopNav pageName="Community" />
+      <div class="content">
+        <Route path="/">
+          <CommunityPage />
+          <!-- <AddPostPage /> -->
+        </Route>
+        <Route path="add-post">
+          <AddPostPage />
+        </Route>
+      </div>
+      <RightNav />
+    </div>
+    <div class="left">
+      <LeftNav />
+    </div>
+  </main>
+</Router>
 
 <style>
+  .content {
+    overflow-y: auto;
+    margin: 80px 40px;
+  }
+
   main {
     display: flex;
     height: 100%;

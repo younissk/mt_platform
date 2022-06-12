@@ -119,10 +119,3 @@
     {/each}
   </div>
 </main>
-
-<style>
-  main {
-    overflow-y: auto;
-    margin: 80px 40px;
-  }
-</style>
