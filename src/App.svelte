@@ -5,6 +5,7 @@
   import CommunityPage from "./features/community/CommunityPage.svelte";
   import AddPostPage from "./features/add-post/AddPostPage.svelte";
   import { Router, Route } from "svelte-routing";
+  import MobileNav from "./features/navigation/components/MobileNav.svelte";
 </script>
 
 <Router>
@@ -25,6 +26,7 @@
     <div class="left">
       <LeftNav />
     </div>
+    <MobileNav />
   </main>
 </Router>
 
@@ -67,6 +69,9 @@
     .right {
       right: 0;
       left: 0;
+    }
+    .left {
+      display: none;
     }
   }
 </style>

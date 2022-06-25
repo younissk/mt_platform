@@ -30,10 +30,10 @@
 
 <style>
   nav {
-    display: flex;
-    justify-content: space-around;
     position: fixed;
     bottom: 0;
+    display: flex;
+    justify-content: space-around;
     background-color: #090a0b;
     width: 100%;
   }
@@ -47,5 +47,10 @@
     color: #ca992c;
     margin-right: 10px;
     font-size: 22px;
+  }
+  @media (min-width: 600px) {
+    nav {
+      display: none;
+    }
   }
 </style>
