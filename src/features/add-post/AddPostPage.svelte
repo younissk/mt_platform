@@ -1,5 +1,7 @@
 <script>
   import { quill } from "svelte-quill";
+  import { addPost } from "../../firebase";
+  import { Link } from "svelte-routing";
 
   let options = {
     modules: {
@@ -13,6 +15,8 @@
   };
 
   let content = { html: "", text: "" };
+  let title;
+  let author = "JD9iPlt1A7QPTZB7Nuaq";
 </script>
 
 <svelte:head>
@@ -21,16 +25,58 @@
 </svelte:head>
 
 <main>
+  <div class="title">
+    <input
+      type="text"
+      id="fname"
+      name="fname"
+      placeholder="Title"
+      bind:value={title}
+    /><br />
+    <Link to="/">
+      <button
+        on:click={() => {
+          addPost({
+            author: author,
+            title: title,
+            content: content.html,
+          });
+        }}
+      >
+        Publish
+      </button>
+    </Link>
+  </div>
+
   <div
     class="editor"
     use:quill={options}
-    on:text-change={(e) => (content = e.detail)}
+    on:text-change={(e) => {
+      content = e.detail;
+    }}
   />
 </main>
 
 <style>
+  input {
+    margin: 20px 0px;
+    padding: 0;
+    width: 100%;
+  }
+
   main {
     background-color: white;
     border-radius: 15px;
+  }
+
+  @media (max-width: 600px) {
+    main {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0px;
+    }
   }
 </style>

@@ -1,6 +1,8 @@
 <script>
   import Post from "./components/Post.svelte";
-  let posts = [
+  import { getPosts } from "../../firebase";
+  import { onMount } from "svelte";
+  let postsTest = [
     {
       date: "17:40 07.06.2022",
       userName: "name",
@@ -110,12 +112,20 @@
         '<div class="content"> <img style="width: 100%" src="https://hpd.de/sites/hpd.de/files/field/image/taj_mahal.jpg" /> </div>',
     },
   ];
+
+  let posts = [];
+
+  onMount(async () => {
+    let postSnapshot = await getPosts();
+    posts = [...postSnapshot];
+  });
 </script>
 
 <main>
   <div class="content">
     {#each posts as post}
-      <Post headingData={post} comments={post.comments} />
+      <!-- <Post headingData={post.data()} comments={post.comments} /> -->
+      <Post headingData={post} />
     {/each}
   </div>
 </main>

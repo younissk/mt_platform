@@ -5,7 +5,7 @@
 
 <div class="main">
   <img
-    src="https://www.mytazkiyah.com/wp-content/uploads/My-Tazkiyah-logo-2.png"
+    src="https://57775.smushcdn.com/895344/wp-content/uploads/cropped-My-Tazkiyah-logo-2.png?lossy=1&strip=1&webp=1"
     alt=""
     class="logo"
   />
