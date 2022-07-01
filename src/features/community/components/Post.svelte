@@ -2,11 +2,12 @@
   import PostHeading from "./PostHeading.svelte";
   import NavItem from "../../navigation/components/NavItem.svelte";
   import Comment from "./Comment.svelte";
+  import { addComment } from "../../../firebase";
 
-  export let comments = [];
-
-  export let headingData = {
+  export let data = {
     date: "17:40 07.06.2022",
+    id: "",
+    author: "",
     userName: "name",
     postTitle: "This is a cool article I found",
     profilePicture:
@@ -15,18 +16,22 @@
       '<div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem illum eius consequatur nemo recusandae porro voluptas consectetur doloribus voluptatum deleniti, quidem ratione vel unde, sit distinctio, aspernatur aliquam eum! Veritatis qui recusandae iusto nostrum. </div>',
   };
 
+  console.log(data);
+
   $: commentsActive = false;
+
+  let newComment;
 </script>
 
 <div class="card">
   <PostHeading
-    date={headingData.date}
-    userName={headingData.userName}
-    postTitle={headingData.postTitle}
-    profilePicture={headingData.profilePicture}
+    date={data.date}
+    userName={data.userName}
+    postTitle={data.postTitle}
+    profilePicture={data.profilePicture}
   />
   <div class="content">
-    {@html headingData.content}
+    {@html data.content}
   </div>
   <div class="bottom">
     <NavItem icon="thumb_up" />
@@ -38,9 +43,22 @@
     </div>
   </div>
   {#if commentsActive}
-    {#each comments as comment}
+    {#each data.comments as comment}
       <Comment CommentData={comment} />
     {/each}
+    <input
+      type="text"
+      id="fname"
+      name="fname"
+      placeholder="Title"
+      bind:value={newComment}
+    />
+    <button
+      on:click={() => {
+        addComment(data.id, newComment, data.author);
+        newComment = "";
+      }}>+</button
+    >
   {/if}
 </div>
 

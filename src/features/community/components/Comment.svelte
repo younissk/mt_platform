@@ -1,16 +1,23 @@
 <script>
+  import { getSingleUser } from "../../../firebase";
+  import { onMount } from "svelte";
   export let CommentData = {
-    userName: "Test Username",
+    author: "",
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ullam?",
-    profilePicture:
-      "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
   };
+
+  $: authorData = {};
+
+  onMount(async () => {
+    let data = await getSingleUser(CommentData.author);
+    authorData = { ...data };
+  });
 </script>
 
 <div class="comment">
   <div class="user">
-    <img src={CommentData.profilePicture} alt="" class="profilePicture" />
-    <p class="userName">{CommentData.userName}</p>
+    <img src={authorData.profilePicture} alt="" class="profilePicture" />
+    <p class="userName">{authorData.userName}</p>
   </div>
   <p class="comment-text">
     {CommentData.text}

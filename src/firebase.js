@@ -12,6 +12,8 @@ import {
   query,
   orderBy,
   Timestamp,
+  updateDoc,
+  arrayUnion,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -74,32 +76,21 @@ const fbDataToJson = async (snapshot) => {
   let snapshotData = [];
 
   snapshot.forEach((doc) => {
-    snapshotData.push(doc.data());
+    snapshotData.push(doc);
   });
 
   for (let post of snapshotData) {
-    let userData = await getSingleUser(post.author);
+    let userData = await getSingleUser(post.data().author);
 
     let postData = {
-      date: timeConverter(post.date),
+      date: timeConverter(post.data().date),
       userName: userData.userName,
-      postTitle: post.title,
+      postTitle: post.data().title,
       profilePicture: userData.profilePicture,
-      content: post.content,
-      // comments: [
-      //   {
-      //     userName: "Username",
-      //     profilePicture:
-      //       "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
-      //     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ullam?",
-      //   },
-      //   {
-      //     userName: "testing",
-      //     profilePicture:
-      //       "https://www.middleeasteye.net/sites/default/files/styles/article_page/public/2022-04/al-aqsa-israeli-forces-aim-weapons-15apr2022-reuters-edit.jpg?itok=7pxNQaV8",
-      //     text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim assumenda facilis quod! Quo aspernatur ab ullam alias perferendis deleniti voluptatibus. Libero tempore culpa possimus omnis facilis repudiandae. Libero perferendis eum reprehenderit eos, ipsa expedita numquam quasi repudiandae porro sequi non?",
-      //   },
-      // ],
+      content: post.data().content,
+      id: post.id,
+      author: post.data().author,
+      comments: post.data().comments,
     };
     posts.push(postData);
   }
@@ -118,4 +109,16 @@ export async function getPosts() {
 
 export async function addPost(data) {
   await addDoc(collection(db, "posts"), { ...data, date: Timestamp.now() });
+}
+
+export async function addComment(id, commentText, authorID) {
+  const postRef = doc(db, "posts", id);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(postRef, {
+    comments: arrayUnion({
+      author: authorID,
+      text: commentText,
+    }),
+  });
 }
