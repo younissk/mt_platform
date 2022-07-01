@@ -44,7 +44,7 @@ export async function getSingleUser(id) {
 }
 
 function timeConverter(UNIX_timestamp) {
-  var a = new Date(UNIX_timestamp * 1000);
+  var a = new Date(UNIX_timestamp.seconds * 1000);
   var months = [
     "Jan",
     "Feb",
