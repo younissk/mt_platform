@@ -40,6 +40,7 @@
             author: author,
             title: title,
             content: content.html,
+            comments: [],
           });
         }}
       >

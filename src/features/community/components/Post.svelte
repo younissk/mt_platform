@@ -16,6 +16,8 @@
       '<div class="content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus voluptatem illum eius consequatur nemo recusandae porro voluptas consectetur doloribus voluptatum deleniti, quidem ratione vel unde, sit distinctio, aspernatur aliquam eum! Veritatis qui recusandae iusto nostrum. </div>',
   };
 
+  $: comments = [...data.comments];
+
   console.log(data);
 
   $: commentsActive = false;
@@ -43,7 +45,7 @@
     </div>
   </div>
   {#if commentsActive}
-    {#each data.comments as comment}
+    {#each comments as comment}
       <Comment CommentData={comment} />
     {/each}
     <input
@@ -56,6 +58,7 @@
     <button
       on:click={() => {
         addComment(data.id, newComment, data.author);
+        comments = [...comments, { author: data.author, text: newComment }];
         newComment = "";
       }}>+</button
     >
