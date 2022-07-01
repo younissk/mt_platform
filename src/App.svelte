@@ -14,8 +14,8 @@
       <TopNav pageName="Community" />
       <div class="content">
         <Route path="/">
-          <!-- <CommunityPage /> -->
-          <AddPostPage />
+          <CommunityPage />
+          <!-- <AddPostPage /> -->
         </Route>
         <Route path="add-post">
           <AddPostPage />
