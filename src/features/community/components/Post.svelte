@@ -40,7 +40,7 @@
       class="comments-button"
       on:click={() => (commentsActive = !commentsActive)}
     >
-      <NavItem />
+      <NavItem redirect="" />
     </div>
   </div>
   {#if commentsActive}
