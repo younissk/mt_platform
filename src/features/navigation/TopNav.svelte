@@ -8,7 +8,7 @@
   <nav>
     <NavItem icon="settings" />
     <NavItem icon="notifications" />
-    <NavItem icon="person" />
+    <NavItem icon="person" redirect="profile" />
   </nav>
 </div>
 

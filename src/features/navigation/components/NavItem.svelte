@@ -1,10 +1,14 @@
 <script>
   export let icon = "forum";
+  export let redirect = "profile";
+  import { Link } from "svelte-routing";
 </script>
 
-<div class="main">
-  <i class="material-icons">{icon}</i>
-</div>
+<Link to={redirect}>
+  <div class="main">
+    <i class="material-icons">{icon}</i>
+  </div>
+</Link>
 
 <style>
   .main {
