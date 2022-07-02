@@ -3,6 +3,7 @@
   import NavItem from "../../navigation/components/NavItem.svelte";
   import Comment from "./Comment.svelte";
   import { addComment } from "../../../firebase";
+  import { UserIdStore } from "../../../stores";
 
   export let data = {
     date: "17:40 07.06.2022",
@@ -17,8 +18,6 @@
   };
 
   $: comments = [...data.comments];
-
-  console.log(data);
 
   $: commentsActive = false;
 
@@ -57,7 +56,7 @@
     />
     <button
       on:click={() => {
-        addComment(data.id, newComment, data.author);
+        addComment(data.id, newComment, $UserIdStore);
         comments = [...comments, { author: data.author, text: newComment }];
         newComment = "";
       }}>+</button

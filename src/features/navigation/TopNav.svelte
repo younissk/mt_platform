@@ -1,10 +1,10 @@
 <script>
-  export let pageName;
+  import { currentPageTitle } from "../../stores";
   import NavItem from "./components/NavItem.svelte";
 </script>
 
 <div class="main">
-  <h1 class="page-name">{pageName}</h1>
+  <h1 class="page-name">{$currentPageTitle}</h1>
   <nav>
     <NavItem icon="settings" />
     <NavItem icon="notifications" />

@@ -1,3 +1,7 @@
 import { writable } from "svelte/store";
 
-export const UserIdStore = writable("");
+const stored = localStorage.id;
+export const UserIdStore = writable(stored || "");
+UserIdStore.subscribe((value) => (localStorage.id = value));
+
+export const currentPageTitle = writable("");

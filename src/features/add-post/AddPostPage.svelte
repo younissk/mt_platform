@@ -2,6 +2,7 @@
   import { quill } from "svelte-quill";
   import { addPost } from "../../firebase";
   import { Link } from "svelte-routing";
+  import { UserIdStore } from "../../stores";
 
   let options = {
     modules: {
@@ -16,7 +17,7 @@
 
   let content = { html: "", text: "" };
   let title;
-  let author = "JD9iPlt1A7QPTZB7Nuaq";
+  let author = $UserIdStore;
 </script>
 
 <svelte:head>

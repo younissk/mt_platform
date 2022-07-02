@@ -122,3 +122,33 @@ export async function addComment(id, commentText, authorID) {
     }),
   });
 }
+
+export const isUserFirstTimeLogin = async (id) => {
+  let data = await getSingleUser(id);
+  if (data.userName === "") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const isUser = async (id) => {
+  const docRef = doc(db, "users", id);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export async function changeProfile(id, userName, pictureURL) {
+  const postRef = doc(db, "users", id);
+
+  // Set the "capital" field of the city 'DC'
+  await updateDoc(postRef, {
+    userName: userName,
+    profilePicture: pictureURL,
+  });
+}
