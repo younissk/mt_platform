@@ -10,10 +10,12 @@
     </div>
   </Link>
 
-  <div class="nav-item">
-    <i class="material-icons">forum</i>
-    <h3>Chat</h3>
-  </div>
+  <Link to="/chat" style="width: 100%; text-decoration: none; color: #e5e5e5">
+    <div class="nav-item">
+      <i class="material-icons">forum</i>
+      <h3>Chat</h3>
+    </div>
+  </Link>
 
   <div class="nav-item">
     <i class="material-icons">slideshow</i>

@@ -1,41 +1,22 @@
 <script>
   import TopNav from "./features/navigation/TopNav.svelte";
   import LeftNav from "./features/navigation/LeftNav.svelte";
-  import RightNav from "./features/navigation/RightNav.svelte";
-  import CommunityPage from "./features/community/CommunityPage.svelte";
-  import AddPostPage from "./features/add-post/AddPostPage.svelte";
-  import { Router, Route } from "svelte-routing";
   import MobileNav from "./features/navigation/components/MobileNav.svelte";
   import Login from "./features/login/Login.svelte";
-  import ProfilePage from "./features/profile/ProfilePage.svelte";
-  import { UserIdStore } from "./stores";
+  import { Router, Route } from "svelte-routing";
+  import { UserIdStore } from "./utils/stores";
+  import AppRouter from "./features/AppRouter.svelte";
 </script>
 
 <Router>
   {#if $UserIdStore === ""}
-    <Route path="/">
-      <Login />
-    </Route>
+    <Login />
   {:else}
     <main>
+      <LeftNav />
       <div class="right">
         <TopNav />
-        <div class="content">
-          <Route path="/">
-            <CommunityPage />
-            <!-- <ProfilePage /> -->
-          </Route>
-          <Route path="profile">
-            <ProfilePage />
-          </Route>
-          <Route path="add-post">
-            <AddPostPage />
-          </Route>
-        </div>
-        <RightNav />
-      </div>
-      <div class="left">
-        <LeftNav />
+        <AppRouter />
       </div>
       <MobileNav />
     </main>
@@ -43,47 +24,16 @@
 </Router>
 
 <style>
-  .content {
-    overflow-y: auto;
-    margin: 80px 40px;
-  }
-
   main {
     display: flex;
-    height: 100%;
-    width: 100%;
-  }
-
-  .left {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
+    width: 100vw;
+    height: 100vh;
   }
 
   .right {
-    position: absolute;
-    top: 0;
-    right: 200px;
-    left: 200px;
-  }
-
-  @media (max-width: 1000px) {
-    .right {
-      right: 0;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .right {
-      right: 0;
-      left: 0;
-    }
-    .left {
-      display: none;
-    }
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
   }
 </style>

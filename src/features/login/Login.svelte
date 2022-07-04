@@ -1,6 +1,6 @@
 <script>
-  import { UserIdStore } from "../../stores";
-  import { isUser, isUserFirstTimeLogin } from "../../firebase";
+  import { UserIdStore } from "../../utils/stores";
+  import { isUser, isUserFirstTimeLogin } from "../../utils/firebase";
   $: id = "";
   $: errormessage = "";
 </script>

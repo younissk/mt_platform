@@ -2,8 +2,8 @@
   import PostHeading from "./PostHeading.svelte";
   import NavItem from "../../navigation/components/NavItem.svelte";
   import Comment from "./Comment.svelte";
-  import { addComment } from "../../../firebase";
-  import { UserIdStore } from "../../../stores";
+  import { addComment } from "../../../utils/firebase";
+  import { UserIdStore } from "../../../utils/stores";
 
   export let data = {
     date: "17:40 07.06.2022",
@@ -70,7 +70,7 @@
   }
 
   .card {
-    margin: 20px 0;
+    margin: 20px;
     padding: 12px;
     border-radius: 15px;
     background-color: #171718;

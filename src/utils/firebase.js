@@ -146,9 +146,25 @@ export const isUser = async (id) => {
 export async function changeProfile(id, userName, pictureURL) {
   const postRef = doc(db, "users", id);
 
-  // Set the "capital" field of the city 'DC'
   await updateDoc(postRef, {
     userName: userName,
     profilePicture: pictureURL,
+  });
+}
+
+export async function getChatMessages(chatId) {
+  const snapshot = await getDoc(doc(collection(db, "chats"), chatId));
+  return snapshot.data().messages;
+}
+
+export async function addChatMessage(chatId, messageText, authorID) {
+  const postRef = doc(db, "chats", chatId);
+
+  await updateDoc(postRef, {
+    messages: arrayUnion({
+      author: authorID,
+      text: messageText,
+      date: Timestamp.now(),
+    }),
   });
 }

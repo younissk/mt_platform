@@ -1,8 +1,8 @@
 <script>
   import { quill } from "svelte-quill";
-  import { addPost } from "../../firebase";
+  import { addPost } from "../../utils/firebase";
   import { Link } from "svelte-routing";
-  import { UserIdStore } from "../../stores";
+  import { UserIdStore } from "../../utils/stores";
 
   let options = {
     modules: {

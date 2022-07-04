@@ -1,5 +1,5 @@
 <script>
-  import { getSingleUser } from "../../../firebase";
+  import { getSingleUser } from "../../../utils/firebase";
   import { onMount } from "svelte";
   export let CommentData = {
     author: "",

@@ -1,6 +1,6 @@
 <script>
-  import { currentPageTitle, UserIdStore } from "../../stores";
-  import { changeProfile } from "../../firebase";
+  import { currentPageTitle, UserIdStore } from "../../utils/stores";
+  import { changeProfile } from "../../utils/firebase";
   currentPageTitle.set("Profile");
   import { navigate } from "svelte-routing";
 

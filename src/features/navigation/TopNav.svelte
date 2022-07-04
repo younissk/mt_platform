@@ -1,5 +1,5 @@
 <script>
-  import { currentPageTitle } from "../../stores";
+  import { currentPageTitle } from "../../utils/stores";
   import NavItem from "./components/NavItem.svelte";
 </script>
 
@@ -14,14 +14,10 @@
 
 <style>
   .main {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 200px;
     display: flex;
+    margin: 0 20px;
     align-items: center;
     justify-content: space-between;
-    margin: 0px 40px;
     border-bottom: solid 1px #4e4f51;
     background-color: #1a1e23;
   }
