@@ -1,30 +1,31 @@
 <script>
   import { Link } from "svelte-routing";
+  import MobileNav from "./MobileNav.svelte";
 </script>
 
 <nav>
   <Link to="/" style="width: 100%; text-decoration: none; color: #e5e5e5">
     <div class="nav-item">
       <i class="material-icons">group</i>
-      <h3>Community</h3>
+      <h3 class="page-name">Community</h3>
     </div>
   </Link>
 
   <Link to="/chat" style="width: 100%; text-decoration: none; color: #e5e5e5">
     <div class="nav-item">
       <i class="material-icons">forum</i>
-      <h3>Chat</h3>
+      <h3 class="page-name">Chat</h3>
     </div>
   </Link>
 
   <div class="nav-item">
     <i class="material-icons">slideshow</i>
-    <h3>Course</h3>
+    <h3 class="page-name">Course</h3>
   </div>
 
   <div class="nav-item">
     <i class="material-icons">folder</i>
-    <h3>Material</h3>
+    <h3 class="page-name">Material</h3>
   </div>
 </nav>
 
@@ -54,5 +55,11 @@
     color: #ca992c;
     margin-right: 10px;
     font-size: 18px;
+  }
+
+  @media (max-width: 600px) {
+    nav {
+      display: none;
+    }
   }
 </style>

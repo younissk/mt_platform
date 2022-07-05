@@ -21,7 +21,6 @@
 </script>
 
 <svelte:head>
-  <!-- <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet" /> -->
   <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
 </svelte:head>
 
@@ -62,23 +61,16 @@
 <style>
   input {
     margin: 20px 0px;
+    min-height: 40px;
     padding: 0;
     width: 100%;
+    height: 100%;
   }
 
   main {
     background-color: white;
-    border-radius: 15px;
-  }
-
-  @media (max-width: 600px) {
-    main {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      border-radius: 0px;
-    }
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 </style>

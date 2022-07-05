@@ -17,8 +17,8 @@
       <div class="right">
         <TopNav />
         <AppRouter />
+        <MobileNav />
       </div>
-      <MobileNav />
     </main>
   {/if}
 </Router>
@@ -33,7 +33,14 @@
   .right {
     display: flex;
     flex-direction: column;
+    overflow: auto;
     width: 100%;
     height: 100%;
+  }
+
+  @media (max-width: 600px) {
+    main {
+      flex-direction: column-reverse;
+    }
   }
 </style>

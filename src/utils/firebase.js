@@ -14,6 +14,7 @@ import {
   Timestamp,
   updateDoc,
   arrayUnion,
+  onSnapshot,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -166,5 +167,11 @@ export async function addChatMessage(chatId, messageText, authorID) {
       text: messageText,
       date: Timestamp.now(),
     }),
+  });
+}
+
+export async function onChatChange(chatId, func) {
+  onSnapshot(doc(db, "chats", chatId), (doc) => {
+    func();
   });
 }

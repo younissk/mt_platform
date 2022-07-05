@@ -2,14 +2,14 @@
   import { Link } from "svelte-routing";
 </script>
 
-<nav>
+<nav class="mobile-nav">
   <Link to="/" style="text-decoration: none; color: #e5e5e5">
     <div class="nav-item">
       <i class="material-icons">group</i>
     </div>
   </Link>
 
-  <Link to="chat" style="text-decoration: none; color: #e5e5e5">
+  <Link to="/chat" style="text-decoration: none; color: #e5e5e5">
     <div class="nav-item">
       <i class="material-icons">forum</i>
     </div>
@@ -32,8 +32,6 @@
 
 <style>
   nav {
-    position: fixed;
-    bottom: 0;
     display: flex;
     justify-content: space-around;
     background-color: #090a0b;
@@ -41,7 +39,7 @@
   }
   .nav-item {
     margin: 10px;
-    max-height: 32px;
+    height: 32px;
     padding: 6px 10px;
   }
 
@@ -50,6 +48,7 @@
     margin-right: 10px;
     font-size: 22px;
   }
+
   @media (min-width: 600px) {
     nav {
       display: none;

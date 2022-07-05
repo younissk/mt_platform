@@ -26,4 +26,10 @@
     background-color: #090a0b;
     cursor: pointer;
   }
+
+  @media (max-width: 600px) {
+    .add-post {
+      display: none;
+    }
+  }
 </style>

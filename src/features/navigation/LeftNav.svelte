@@ -3,7 +3,7 @@
   import AddPostButton from "./components/AddPostButton.svelte";
 </script>
 
-<div class="main">
+<main>
   <img
     src="https://57775.smushcdn.com/895344/wp-content/uploads/cropped-My-Tazkiyah-logo-2.png?lossy=1&strip=1&webp=1"
     alt=""
@@ -11,10 +11,10 @@
   />
   <Navbar />
   <AddPostButton />
-</div>
+</main>
 
 <style>
-  .main {
+  main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,7 +31,7 @@
   }
 
   @media (max-width: 600px) {
-    .main {
+    main {
       display: none;
     }
   }
