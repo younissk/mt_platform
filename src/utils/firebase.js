@@ -175,3 +175,8 @@ export async function onChatChange(chatId, func) {
     func();
   });
 }
+
+export async function getLessons(courseId) {
+  const snapshot = await getDoc(doc(collection(db, "courses"), courseId));
+  return snapshot.data().lessons;
+}

@@ -18,10 +18,15 @@
     </div>
   </Link>
 
-  <div class="nav-item">
-    <i class="material-icons">slideshow</i>
-    <h3 class="page-name">Course</h3>
-  </div>
+  <Link
+    to="/courses"
+    style="width: 100%; text-decoration: none; color: #e5e5e5"
+  >
+    <div class="nav-item">
+      <i class="material-icons">slideshow</i>
+      <h3 class="page-name">Course</h3>
+    </div>
+  </Link>
 
   <div class="nav-item">
     <i class="material-icons">folder</i>

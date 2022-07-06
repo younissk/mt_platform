@@ -35,6 +35,7 @@
     flex-direction: column;
     overflow: auto;
     width: 100%;
+    max-height: 100vh;
     height: 100%;
   }
 
