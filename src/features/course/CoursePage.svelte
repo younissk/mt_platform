@@ -39,5 +39,6 @@
 
   .video-container video {
     width: 100%;
+    max-height: 50vh;
   }
 </style>
