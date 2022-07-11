@@ -11,3 +11,7 @@ export const currentPageTitle = writable(
 export const currentVideo = writable(0);
 
 export const expandPost = writable(false);
+
+export const currentChat = writable("S5BQpsDjZNttfhvmzjlj");
+
+export const showChats = writable(true);

@@ -1,18 +1,24 @@
 <script>
-  import { currentPageTitle } from "../../utils/stores";
+  import { currentPageTitle, showChats, currentChat } from "../../utils/stores";
   import SendMessage from "./components/SendMessage.svelte";
   import Chat from "./components/Chat.svelte";
+  import ChatNavigator from "./components/ChatNavigator.svelte";
 
-  let chatId = "S5BQpsDjZNttfhvmzjlj";
   currentPageTitle.set("Chat");
 </script>
 
 <div class="chat-app">
   <div class="app">
-    <Chat {chatId} />
-    <SendMessage {chatId} />
+    {#if $showChats}
+      <ChatNavigator />
+    {:else}
+      <header>
+        <button on:click={() => showChats.set(true)}>Chats</button>
+      </header>
+      <Chat {$currentChat} />
+    {/if}
+    <SendMessage {$currentChat} />
   </div>
-  <!-- <div class="user-list" /> -->
 </div>
 
 <style>
@@ -28,5 +34,9 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+  }
+
+  header {
+    background-color: black;
   }
 </style>

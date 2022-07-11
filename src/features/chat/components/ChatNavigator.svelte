@@ -1,169 +1,46 @@
+<script>
+  import {
+    currentPageTitle,
+    showChats,
+    currentChat,
+  } from "../../../utils/stores";
+
+  let chats = [
+    {
+      name: "Brothers",
+      id: "S5BQpsDjZNttfhvmzjlj",
+      image:
+        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_07.jpg",
+    },
+  ];
+</script>
+
 <aside>
-  <header>
-    <input type="text" placeholder="search" />
-  </header>
   <ul>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status orange" />
-          offline
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_02.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_03.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status orange" />
-          offline
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_04.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_05.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status orange" />
-          offline
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_06.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_07.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_08.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_09.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status green" />
-          online
-        </h3>
-      </div>
-    </li>
-    <li>
-      <img
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_10.jpg"
-        alt=""
-      />
-      <div>
-        <h2>Prénom Nom</h2>
-        <h3>
-          <span class="status orange" />
-          offline
-        </h3>
-      </div>
-    </li>
+    {#each chats as chat}
+      <li
+        on:click={() => {
+          showChats.set(false);
+          currentPageTitle.set(chat.name);
+          currentChat.set(chat.id);
+        }}
+      >
+        <img src={chat.image} alt="" />
+        <div>
+          <h2>{chat.name}</h2>
+        </div>
+      </li>
+    {/each}
   </ul>
 </aside>
 
 <style>
   aside {
-    width: 260px;
-    height: 800px;
-    background-color: #3b3e49;
+    width: 100%;
+    height: 100%;
     display: inline-block;
     font-size: 15px;
     vertical-align: top;
-  }
-  aside header {
-    padding: 30px 20px;
-  }
-  aside input {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    padding: 0 50px 0 20px;
-    background-color: #5e616a;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
-    background-repeat: no-repeat;
-    background-position: 170px;
-    background-size: 40px;
-  }
-  aside input::placeholder {
-    color: #fff;
   }
   aside ul {
     padding-left: 0;
@@ -174,6 +51,7 @@
   }
   aside li {
     padding: 10px 0;
+    cursor: pointer;
   }
   aside li:hover {
     background-color: #5e616a;
