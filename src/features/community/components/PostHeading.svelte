@@ -1,4 +1,5 @@
 <script>
+  import { expandPost } from "../../../utils/stores";
   export let date = "17:40 07.06.2022";
   export let userName = "Test Username";
   export let postTitle = "This is a heading for a post / discussion";

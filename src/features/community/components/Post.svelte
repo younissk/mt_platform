@@ -4,6 +4,7 @@
   import Comment from "./Comment.svelte";
   import { addComment } from "../../../utils/firebase";
   import { UserIdStore } from "../../../utils/stores";
+  import { Link } from "svelte-routing";
 
   export let data = {
     date: "17:40 07.06.2022",
@@ -19,61 +20,71 @@
 
   $: comments = [...data.comments];
 
+  $: expandedView = false;
+
   $: commentsActive = false;
 
   let newComment;
 </script>
 
-<div class="card">
-  <PostHeading
-    date={data.date}
-    userName={data.userName}
-    postTitle={data.postTitle}
-    profilePicture={data.profilePicture}
-  />
-  <div class="content">
-    {@html data.content}
-  </div>
-  <div class="bottom">
-    <NavItem icon="thumb_up" />
-    <div
-      class="comments-button"
-      on:click={() => (commentsActive = !commentsActive)}
-    >
-      <NavItem redirect="" />
-    </div>
-  </div>
-  {#if commentsActive}
-    {#each comments as comment}
-      <Comment CommentData={comment} />
-    {/each}
-    <input
-      type="text"
-      id="fname"
-      name="fname"
-      placeholder="Title"
-      bind:value={newComment}
+<main>
+  <header>
+    <PostHeading
+      date={data.date}
+      userName={data.userName}
+      postTitle={data.postTitle}
+      profilePicture={data.profilePicture}
     />
-    <button
-      on:click={() => {
-        addComment(data.id, newComment, $UserIdStore);
-        comments = [...comments, { author: data.author, text: newComment }];
-        newComment = "";
-      }}>+</button
-    >
-  {/if}
-</div>
+  </header>
+  <article>
+    <div class="content">
+      {@html data.content}
+    </div>
+  </article>
+  <footer>
+    <div class="bottom">
+      <NavItem icon="thumb_up" />
+      <div
+        class="comments-button"
+        on:click={() => (commentsActive = !commentsActive)}
+      >
+        <NavItem redirect="" />
+      </div>
+    </div>
+    {#if commentsActive}
+      {#each comments as comment}
+        <Comment CommentData={comment} />
+      {/each}
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        placeholder="Title"
+        bind:value={newComment}
+      />
+      <button
+        on:click={() => {
+          addComment(data.id, newComment, $UserIdStore);
+          comments = [...comments, { author: data.author, text: newComment }];
+          newComment = "";
+        }}>+</button
+      >
+    {/if}
+  </footer>
+</main>
 
 <style>
-  .content {
-    margin: 8px;
-  }
-
-  .card {
+  main {
+    position: relative;
     margin: 20px;
     padding: 12px;
     border-radius: 15px;
     background-color: #171718;
+    transition: all 1s ease-in;
+  }
+
+  .content {
+    margin: 8px;
   }
 
   .bottom {

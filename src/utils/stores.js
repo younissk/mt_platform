@@ -9,3 +9,5 @@ export const currentPageTitle = writable(
 );
 
 export const currentVideo = writable(0);
+
+export const expandPost = writable(false);
